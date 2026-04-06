@@ -1,65 +1,34 @@
-import Image from "next/image";
-
 export default function Home() {
+  // A simple array of dummy data to make our HTML cleaner
+  const products = [
+    { id: 1, name: "Smart Meter v1", price: "฿2,500", desc: "Real-time power monitoring." },
+    { id: 2, name: "Solar Transformer", price: "฿15,000", desc: "High-efficiency grid tie." },
+    { id: 3, name: "Surge Protector", price: "฿850", desc: "Industrial grade safety." }
+  ];
+
   return (
-    <div className="flex flex-col flex-1 items-center justify-center bg-zinc-50 font-sans dark:bg-black">
-      <main className="flex flex-1 w-full max-w-3xl flex-col items-center justify-between py-32 px-16 bg-white dark:bg-black sm:items-start">
-        <Image
-          className="dark:invert"
-          src="/next.svg"
-          alt="Next.js logo"
-          width={100}
-          height={20}
-          priority
-        />
-        <div className="flex flex-col items-center gap-6 text-center sm:items-start sm:text-left">
-          <h1 className="max-w-xs text-3xl font-semibold leading-10 tracking-tight text-black dark:text-zinc-50">
-            Hello PEA im getting started right? am I?, Test git commit(notebook), Test pc commit 2
-          </h1>
-          <p className="max-w-md text-lg leading-8 text-zinc-600 dark:text-zinc-400">
-            Looking for a starting point or more instructions? Head over to{" "}
-            <a
-              href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-              className="font-medium text-zinc-950 dark:text-zinc-50"
-            >
-              Templates
-            </a>{" "}
-            or the{" "}
-            <a
-              href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-              className="font-medium text-zinc-950 dark:text-zinc-50"
-            >
-              Learning
-            </a>{" "}
-            center.
-          </p>
-        </div>
-        <div className="flex flex-col gap-4 text-base font-medium sm:flex-row">
-          <a
-            className="flex h-12 w-full items-center justify-center gap-2 rounded-full bg-foreground px-5 text-background transition-colors hover:bg-[#383838] dark:hover:bg-[#ccc] md:w-[158px]"
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <Image
-              className="dark:invert"
-              src="/vercel.svg"
-              alt="Vercel logomark"
-              width={16}
-              height={16}
-            />
-            Deploy Now
-          </a>
-          <a
-            className="flex h-12 w-full items-center justify-center rounded-full border border-solid border-black/[.08] px-5 transition-colors hover:border-transparent hover:bg-black/[.04] dark:border-white/[.145] dark:hover:bg-[#1a1a1a] md:w-[158px]"
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Documentation
-          </a>
-        </div>
-      </main>
-    </div>
+    <main className="mt-8">
+      <header className="mb-10 text-center">
+        <h2 className="text-3xl font-extrabold text-gray-800">Our Energy Products</h2>
+        <p className="text-gray-500 mt-2">Reliable tech for the modern grid.</p>
+      </header>
+
+      {/* CSS Grid: 1 column on mobile, 3 columns on medium screens */}
+      <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+        {products.map((item) => (
+          <div key={item.id} className="bg-white p-6 rounded-xl shadow-sm border border-gray-100 hover:shadow-md transition">
+            <div className="h-32 bg-blue-100 rounded-lg mb-4 flex items-center justify-center text-blue-400">
+              [Image Placeholder]
+            </div>
+            <h3 className="font-bold text-lg">{item.name}</h3>
+            <p className="text-sm text-gray-500 my-2">{item.desc}</p>
+            <p className="font-semibold text-blue-600">{item.price}</p>
+            <button className="mt-4 w-full bg-blue-600 text-white py-2 rounded-lg hover:bg-blue-700 transition">
+              View Details
+            </button>
+          </div>
+        ))}
+      </div>
+    </main>
   );
 }
